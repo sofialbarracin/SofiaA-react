@@ -1,18 +1,27 @@
-import { NavBar } from "./Componentes/layout/navbar/NavBar";
-import ItemListContainer from "./Componentes/pages/ItemListContainer/ItemListContainer";
-import { Home } from "./Componentes/pages/home/Home";
-import { Login } from "./Componentes/pages/login/Login";
+/*import CounterContainer from "./Componentes/common/counter/CounterContainer";*/
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemListContainer from "./Componentes/pages/itemListContainer/ItemListContainer";
+import ItemDetailContainer from "./Componentes/pages/itemDetailCounter/ItemDetailContainer";
+import Cart from "./Componentes/pages/cart/Cart";
+import Layout from "./Componentes/layout/Layout";
 
 function App() {
-  let saludo = "Hola Sofia, como estas?";
-
   return (
-    <div>
-      <NavBar />
-      <Home />
-      <Login />
-      <ItemListContainer saludo={saludo} edad={20}/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route
+            path="/category/:categoryName"
+            element={<ItemListContainer />}
+          />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+          <Route path="*" element={<h1>Nos found</h1>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

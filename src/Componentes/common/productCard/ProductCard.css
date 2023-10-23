@@ -1,0 +1,10 @@
+.cardActions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .button {
+    justify-content: flex-end;
+ 
+  }
+  

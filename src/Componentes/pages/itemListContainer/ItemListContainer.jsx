@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
+import { products } from "../../../../productsMock";
+import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
 
+const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
 
-const ItemListContainer = ({saludo, edad}) => {
+const { categoryName } = useParams()
+console.log(categoryName ? "itentando filtrar" : "home")
 
-  return (
-    <div>
-      <h4>{saludo}</h4>
-      <h5>Mi edad es {edad}</h5>
-    </div>
-  )
-}
+  useEffect(() => {
+    const productosFiltrados = products.filter( product => product.category === categoryName)
 
-export default ItemListContainer
+    const tarea = new Promise((resolve, reject) => {
+      resolve(categoryName ? productosFiltrados : products);
+    });
+
+    tarea.then((res) => setItems(res)).catch((error) => console.log(error));
+  }, [categoryName]);
+
+  return <ItemList items={items} />;
+};
+
+export default ItemListContainer;
