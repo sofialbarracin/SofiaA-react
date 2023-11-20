@@ -1,26 +1,15 @@
 /*import CounterContainer from "./Componentes/common/counter/CounterContainer";*/
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ItemListContainer from "./Componentes/pages/itemListContainer/ItemListContainer";
-import ItemDetailContainer from "./Componentes/pages/itemDetailCounter/ItemDetailContainer";
-import Cart from "./Componentes/pages/cart/Cart";
-import Layout from "./Componentes/layout/Layout";
+import { BrowserRouter } from "react-router-dom";
+import Approuter from "./router/Approuter";
+import CartContextComponent from "./context/CartContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route
-            path="/category/:categoryName"
-            element={<ItemListContainer />}
-          />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-          <Route path="*" element={<h1>Nos found</h1>} />
-        </Route>
-      </Routes>
+      <CartContextComponent>
+        <Approuter />
+      </CartContextComponent>
     </BrowserRouter>
   );
 }

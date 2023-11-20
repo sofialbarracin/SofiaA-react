@@ -1,15 +1,6 @@
 export let products = [
+
     {
-        id: 1,
-        title: "Palma kentia",
-        price: 3000,
-        stock: 3,
-        descripcion: "Tropical y purificadora",
-        category: "plantas",
-        img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697877068/palmaKentia_syzxnd.avif",
-    },
-    {
-        id: 2,
         title: "Pachira",
         price: 3000,
         stock: 3,
@@ -18,7 +9,6 @@ export let products = [
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878558/pachira_nayifa.avif",
     },
     {
-        id: 3,
         title: "Ave del Paraiso",
         price: 3000,
         stock: 3,
@@ -27,7 +17,6 @@ export let products = [
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878682/paraiso_w0jrav.avif",
     },
     {
-        id: 4,
         title: "Olivo",
         price: 3000,
         stock: 3,
@@ -36,7 +25,6 @@ export let products = [
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878937/olivo_hjbi06.avif",
     },
     {
-        id: 5,
         title: "Monstera",
         price: 3000,
         stock: 3,
@@ -44,17 +32,8 @@ export let products = [
         category: "plantas",
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878944/monstera_zim88t.avif",
     },
+
     {
-        id: 6,
-        title: "Cesta Nauru",
-        price: 1500,
-        stock: 3,
-        descripcion: "Yute con forro de plástico",
-        category: "macetas",
-        img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878954/CestaNauru_celrad.avif",
-    },
-    {
-        id: 7,
         title: "Maceta Amsterdam",
         price: 1500,
         stock: 3,
@@ -63,7 +42,6 @@ export let products = [
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878957/macetaAmsterdam_lbnel5.avif",
     },
     {
-        id: 8,
         title: "Maceta Kenia",
         price: 1500,
         stock: 3,
@@ -72,7 +50,6 @@ export let products = [
         img: "https://res.cloudinary.com/dfzxicmrq/image/upload/v1697878960/macetaKenia_swknjc.avif",
     },
     {
-        id: 9,
         title: "Maceta Toronto",
         price: 1500,
         stock: 3,

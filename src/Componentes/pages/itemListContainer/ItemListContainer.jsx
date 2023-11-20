@@ -1,25 +1,56 @@
 import { useEffect, useState } from "react";
-import { products } from "../../../../productsMock";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import BarLoader from "react-spinners/BarLoader";
+
+import { getDocs, collection, query, where, addDoc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
+import { products } from "../../../../productsMock";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
-const { categoryName } = useParams()
-console.log(categoryName ? "itentando filtrar" : "home")
+  const { categoryName } = useParams();
+
+  const rellenarDB = () => {
+    const productCollection = collection(db, "products");
+    products.forEach((elemento) => {
+      addDoc(productCollection, elemento);
+    });
+  };
 
   useEffect(() => {
-    const productosFiltrados = products.filter( product => product.category === categoryName)
+    let productCollection = collection(db, "products");
 
-    const tarea = new Promise((resolve, reject) => {
-      resolve(categoryName ? productosFiltrados : products);
+    let consulta = undefined;
+
+    if (!categoryName) {
+      consulta = productCollection;
+    } else {
+      consulta = query(
+        productCollection,
+        where("category", "==", categoryName)
+      );
+    }
+    getDocs(consulta).then((res) => {
+      let newArray = res.docs.map((product) => {
+        return { ...product.data(), id: product.id };
+      });
+
+      setItems(newArray);
     });
-
-    tarea.then((res) => setItems(res)).catch((error) => console.log(error));
   }, [categoryName]);
 
-  return <ItemList items={items} />;
-};
+  return (
+    <>
 
+      {items.length === 0 ? (
+        <BarLoader size={50} color="green" />
+      ) : (
+        <ItemList items={items} />
+      )}
+      ;
+    </>
+  );
+};
 export default ItemListContainer;
